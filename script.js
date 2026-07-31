@@ -1,4 +1,15 @@
 const popups = {
+  writings: {
+    title: "writings on philosophy & building",
+    html: `
+      <div class="film-list">
+        <div class="list-heading">start here</div>
+        <div class="film-item"><a href="https://boundary.substack.com/p/prayer-as-ancient-technology?r=2tavrw" target="_blank" rel="noopener">prayer as ancient technology</a></div>
+        <div class="film-item"><a href="https://boundary.substack.com/p/how-language-shapes-how-we-love?r=2tavrw" target="_blank" rel="noopener">can you love me in my mother tongue?</a></div>
+        <div class="film-item"><a href="https://boundary.substack.com/p/do-you-leave-people-lonelier-than?r=2tavrw" target="_blank" rel="noopener">do you leave people lonelier than you met them?</a></div>
+      </div>
+    `
+  },
   boundary: {
     title: "build journal: boundary",
     html: `
