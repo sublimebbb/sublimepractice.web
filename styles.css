@@ -219,7 +219,7 @@ html, body {
 .ascii-tree {
   margin: 0;
   font-family: 'Courier New', ui-monospace, monospace;
-  font-size: clamp(9px, 1.5vw, 15px);
+  font-size: clamp(13px, 2.2vw, 22px);
   line-height: 1.25;
   white-space: pre;
   text-align: left;
