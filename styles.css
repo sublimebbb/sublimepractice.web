@@ -60,6 +60,16 @@ html, body {
   font-weight: 600;
 }
 
+.intro-full {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.intro-primary,
+.intro-secondary {
+  display: none;
+}
+
 /* folders: 2x2 grid right below the text */
 .folders {
   position: relative;
@@ -277,6 +287,13 @@ html, body {
 }
 
 @media (max-width: 700px) {
+  .intro-full {
+    display: none;
+  }
+  .intro-primary,
+  .intro-secondary {
+    display: block;
+  }
   .intro-secondary {
     order: 1;
     margin-top: 40px;
