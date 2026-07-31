@@ -11,6 +11,10 @@ const popups = {
   filmography: {
     title: "filmography",
     html: `<p>coming soon.</p>`
+  },
+  chat: {
+    title: "chat with me",
+    html: `<p>send me a note at <a href="mailto:workwithsublime@gmail.com">workwithsublime@gmail.com</a></p>`
   }
 };
 
