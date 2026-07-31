@@ -45,7 +45,8 @@ html, body {
   z-index: 1;
   max-width: 620px;
   width: min(86vw, 620px);
-  text-align: center;
+  text-align: justify;
+  text-justify: inter-word;
   font-family: 'Inter', ui-sans-serif, sans-serif;
   font-weight: 400;
   font-size: clamp(0.95rem, 1.6vw, 1.2rem);
@@ -104,11 +105,6 @@ html, body {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
-}
-
-.intro-full {
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 .intro-primary,
@@ -384,6 +380,12 @@ html, body {
   .ascii-garden {
     order: 2;
     margin-top: 24px;
+  }
+
+  .name-preview {
+    top: auto;
+    bottom: calc(100% + 12px);
+    transform: translateX(-50%) translateY(-6px);
   }
 }
 
