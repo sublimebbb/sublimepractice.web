@@ -23,8 +23,8 @@ const popups = {
     title: "filmography",
     html: `
       <div class="film-list">
-        <div class="film-item"><a href="https://www.nowness.asia/story/woman" target="_blank" rel="noopener">wOman</a> <span class="film-year">(2022)</span> &mdash; <a href="https://vimeo.com/sublimebbaby/womantrailer?fl=ip&fe=ec" target="_blank" rel="noopener">trailer</a></div>
         <div class="film-item"><a href="https://vimeo.com/manage/762864228/general" target="_blank" rel="noopener">Honeymoon Phase</a> <span class="film-year">(2021)</span></div>
+        <div class="film-item"><a href="https://www.nowness.asia/story/woman" target="_blank" rel="noopener">wOman</a> <span class="film-year">(2022)</span> &mdash; <a href="https://vimeo.com/sublimebbaby/womantrailer?fl=ip&fe=ec" target="_blank" rel="noopener">trailer</a></div>
         <div class="film-item">Liminal <span class="film-year">(unreleased)</span></div>
         <div class="film-item">Little Gaza <span class="film-year">(unreleased)</span></div>
         <div class="film-item film-cta"><a href="https://thesublimepractice.substack.com/subscribe" target="_blank" rel="noopener">want access?</a></div>
