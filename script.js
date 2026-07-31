@@ -54,6 +54,84 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePopup();
 });
 
+// ascii garden: shapeshifting rows of trees
+const TREES = {
+  cap: [
+    '   _   ',
+    ' _(_)_ ',
+    '(_)@(_)',
+    ' (___) ',
+    '   Y   ',
+    '  \\|/  '
+  ],
+  bubble: [
+    '       ',
+    ' @@@@  ',
+    '@@()@@ ',
+    ' @@@@  ',
+    '   |   ',
+    '  \\|/  '
+  ],
+  wtree: [
+    '       ',
+    ' wWWWw ',
+    '(_____)',
+    '       ',
+    '   Y   ',
+    '  /|\\  '
+  ],
+  vtree: [
+    '       ',
+    ' vVVVv ',
+    '(_____)',
+    '       ',
+    '   |   ',
+    '  \\|/  '
+  ],
+  lean: [
+    '  _    ',
+    '_(_)_  ',
+    '(_)@(_)',
+    ' (_)\\  ',
+    '  `|/  ',
+    '   |   '
+  ]
+};
+
+function buildGarden(keys) {
+  const gap = '  ';
+  const rows = [];
+  for (let r = 0; r < 6; r++) {
+    rows.push(keys.map((k) => TREES[k][r]).join(gap));
+  }
+  rows.push('^'.repeat(rows[0].length));
+  return rows.join('\n');
+}
+
+const gardenFrames = [
+  buildGarden(['cap', 'bubble', 'wtree', 'vtree', 'bubble', 'cap']),
+  buildGarden(['wtree', 'cap', 'lean', 'bubble', 'vtree']),
+  buildGarden(['bubble', 'vtree', 'cap', 'wtree', 'lean', 'vtree'])
+];
+
+const asciiEl = document.getElementById('ascii-frame');
+let gardenIndex = 0;
+
+function showGardenFrame() {
+  if (!asciiEl) return;
+  asciiEl.classList.add('is-fading');
+  setTimeout(() => {
+    gardenIndex = (gardenIndex + 1) % gardenFrames.length;
+    asciiEl.textContent = gardenFrames[gardenIndex];
+    asciiEl.classList.remove('is-fading');
+  }, 600);
+}
+
+if (asciiEl) {
+  asciiEl.textContent = gardenFrames[0];
+  setInterval(showGardenFrame, 3400);
+}
+
 // sparkle cursor trail
 let lastSparkle = 0;
 document.addEventListener('mousemove', (e) => {
