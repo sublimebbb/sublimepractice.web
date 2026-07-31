@@ -32,7 +32,7 @@ const popups = {
     `
   },
   chat: {
-    title: "ask me anything",
+    title: "ask",
     html: `<p>send me a note at <a href="mailto:workwithsublime@gmail.com">workwithsublime@gmail.com</a></p>`
   }
 };
