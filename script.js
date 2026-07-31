@@ -58,7 +58,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePopup();
 });
 
-// ascii garden: shapeshifting rows of trees
+// ascii garden: a still row of trees, with a few gently bouncing
 const TREES = {
   cap: [
     '   _   ',
@@ -66,7 +66,8 @@ const TREES = {
     '(_)@(_)',
     ' (___) ',
     '   Y   ',
-    '  \\|/  '
+    '  \\|/  ',
+    '^^^^^^^'
   ],
   bubble: [
     '       ',
@@ -74,7 +75,8 @@ const TREES = {
     '@@()@@ ',
     ' @@@@  ',
     '   |   ',
-    '  \\|/  '
+    '  \\|/  ',
+    '^^^^^^^'
   ],
   wtree: [
     '       ',
@@ -82,7 +84,8 @@ const TREES = {
     '(_____)',
     '       ',
     '   Y   ',
-    '  /|\\  '
+    '  /|\\  ',
+    '^^^^^^^'
   ],
   vtree: [
     '       ',
@@ -90,7 +93,8 @@ const TREES = {
     '(_____)',
     '       ',
     '   |   ',
-    '  \\|/  '
+    '  \\|/  ',
+    '^^^^^^^'
   ],
   lean: [
     '  _    ',
@@ -98,42 +102,29 @@ const TREES = {
     '(_)@(_)',
     ' (_)\\  ',
     '  `|/  ',
-    '   |   '
+    '   |   ',
+    '^^^^^^^'
   ]
 };
 
-function buildGarden(keys) {
-  const gap = '  ';
-  const rows = [];
-  for (let r = 0; r < 6; r++) {
-    rows.push(keys.map((k) => TREES[k][r]).join(gap));
-  }
-  rows.push('^'.repeat(rows[0].length));
-  return rows.join('\n');
-}
+// index -> tree key for the still garden row
+const gardenRow = ['cap', 'bubble', 'wtree', 'vtree', 'bubble', 'cap'];
+// which of those trees sway, and their phase offset (seconds)
+const bounceMap = { 1: 0, 3: -0.9, 4: -1.6 };
 
-const gardenFrames = [
-  buildGarden(['cap', 'bubble', 'wtree', 'vtree', 'bubble', 'cap']),
-  buildGarden(['wtree', 'cap', 'lean', 'bubble', 'vtree']),
-  buildGarden(['bubble', 'vtree', 'cap', 'wtree', 'lean', 'vtree'])
-];
+const gardenEl = document.getElementById('ascii-garden');
 
-const asciiEl = document.getElementById('ascii-frame');
-let gardenIndex = 0;
-
-function showGardenFrame() {
-  if (!asciiEl) return;
-  asciiEl.classList.add('is-fading');
-  setTimeout(() => {
-    gardenIndex = (gardenIndex + 1) % gardenFrames.length;
-    asciiEl.textContent = gardenFrames[gardenIndex];
-    asciiEl.classList.remove('is-fading');
-  }, 600);
-}
-
-if (asciiEl) {
-  asciiEl.textContent = gardenFrames[0];
-  setInterval(showGardenFrame, 3400);
+if (gardenEl) {
+  gardenRow.forEach((key, i) => {
+    const el = document.createElement('pre');
+    el.className = 'ascii-tree';
+    el.textContent = TREES[key].join('\n');
+    if (i in bounceMap) {
+      el.classList.add('ascii-tree--bounce');
+      el.style.animationDelay = `${bounceMap[i]}s`;
+    }
+    gardenEl.appendChild(el);
+  });
 }
 
 // sparkle cursor trail
