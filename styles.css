@@ -62,6 +62,10 @@ html, body {
   cursor: pointer;
 }
 
+.intro-name--plain {
+  font-weight: 400;
+}
+
 .intro-link {
   color: inherit;
   text-decoration: underline;

@@ -14,8 +14,8 @@ const popups = {
     title: "build journal: boundary",
     html: `
       <div class="popup-links">
-        <a href="https://boundary.substack.com/" target="_blank" rel="noopener">substack &rarr;</a>
-        <a href="https://www.are.na/sublime-bbb/building-boundary-app" target="_blank" rel="noopener">are.na visual journal &rarr;</a>
+        <a href="https://boundary.substack.com/" target="_blank" rel="noopener">can we engineer tools for understanding</a>
+        <a href="https://boundaryai.app" target="_blank" rel="noopener">yes we can</a>
       </div>
     `
   },
