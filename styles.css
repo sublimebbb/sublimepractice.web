@@ -55,9 +55,45 @@ html, body {
 }
 
 .intro-name {
+  position: relative;
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.name-preview {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  width: 130px;
+  background: #fdfdf8;
+  border: 2px solid #111;
+  border-radius: 4px;
+  padding: 6px;
+  box-shadow: 3px 4px 0 rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 5;
+}
+
+.name-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.intro-name:hover .name-preview,
+.intro-name:focus .name-preview,
+.intro-name.is-active .name-preview {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 .intro-full {
@@ -260,18 +296,46 @@ html, body {
   gap: 10px;
 }
 
+.film-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.film-item {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.film-item a {
+  font-size: 13px;
+  margin: 0;
+}
+
+.film-year {
+  color: #777;
+  font-size: 12px;
+}
+
+.film-cta {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid #ddd;
+}
+
 /* cursor sparkles */
 .sparkle {
   position: fixed;
   top: 0;
   left: 0;
-  width: 5px;
-  height: 5px;
-  background: #fff;
-  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #ffffff 0%, #ffc9e6 55%, #cfd2e6 100%);
+  border-radius: 1px;
   box-shadow:
-    0 0 4px 1px rgba(255,255,255,0.95),
-    0 0 10px 3px rgba(255,255,255,0.55);
+    0 0 2px 0 rgba(255,255,255,0.95),
+    0 0 6px 1px rgba(255,153,204,0.6),
+    0 0 10px 2px rgba(200,205,230,0.35);
   pointer-events: none;
   z-index: 20;
   animation: sparkle-fade 700ms ease-out forwards;
@@ -279,12 +343,12 @@ html, body {
 
 @keyframes sparkle-fade {
   0% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.95;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.2) translateY(-14px);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.15) translateY(-16px);
   }
 }
 

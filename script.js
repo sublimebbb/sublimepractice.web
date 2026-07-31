@@ -10,7 +10,15 @@ const popups = {
   },
   filmography: {
     title: "filmography",
-    html: `<p>coming soon.</p>`
+    html: `
+      <div class="film-list">
+        <div class="film-item"><a href="https://www.nowness.asia/story/woman" target="_blank" rel="noopener">wOman</a> <span class="film-year">(2022)</span> &mdash; <a href="https://vimeo.com/sublimebbaby/womantrailer?fl=ip&fe=ec" target="_blank" rel="noopener">trailer</a></div>
+        <div class="film-item"><a href="https://vimeo.com/manage/762864228/general" target="_blank" rel="noopener">Honeymoon Phase</a> <span class="film-year">(2021)</span></div>
+        <div class="film-item">Liminal <span class="film-year">(unreleased)</span></div>
+        <div class="film-item">Little Gaza <span class="film-year">(unreleased)</span></div>
+        <div class="film-item film-cta"><a href="https://thesublimepractice.substack.com/subscribe" target="_blank" rel="noopener">want access?</a></div>
+      </div>
+    `
   },
   chat: {
     title: "chat with me",
@@ -56,6 +64,19 @@ overlay.addEventListener('click', (e) => {
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closePopup();
+});
+
+// tap-to-toggle photo preview on "sublime" (for touch devices, alongside hover)
+document.querySelectorAll('.intro-name').forEach((name) => {
+  name.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const wasActive = name.classList.contains('is-active');
+    document.querySelectorAll('.intro-name.is-active').forEach((el) => el.classList.remove('is-active'));
+    if (!wasActive) name.classList.add('is-active');
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.intro-name.is-active').forEach((el) => el.classList.remove('is-active'));
 });
 
 // ascii garden: a still row of trees, with a few gently bouncing
