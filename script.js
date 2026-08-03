@@ -159,6 +159,19 @@ if (gardenEl) {
   });
 }
 
+// visitor count
+(async () => {
+  const el = document.getElementById('visitor-count');
+  if (!el) return;
+  try {
+    const res = await fetch('https://abacus.jasoncameron.dev/hit/sublimepractice-web/landing');
+    const data = await res.json();
+    el.textContent = `visitor #${data.value}`;
+  } catch (err) {
+    el.remove();
+  }
+})();
+
 // sparkle cursor trail
 let lastSparkle = 0;
 document.addEventListener('mousemove', (e) => {
